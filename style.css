@@ -1,90 +1,386 @@
-body{
+/* GLOBAL */
 
+body{
 font-family:Segoe UI;
-background:#0f172a;
+margin:0;
+background:#0b1a2f;
 color:white;
+}
+
+
+/* LOGIN PAGE */
+
+.loginPage{
+
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:linear-gradient(135deg,#4facfe,#a64bf4);
+
+}
+
+.loginWrapper{
+width:100%;
+display:flex;
+justify-content:center;
+}
+
+.loginBox{
+
+background:white;
+
 padding:40px;
 
+width:320px;
+
+border-radius:10px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+display:flex;
+flex-direction:column;
+
+gap:12px;
+
 }
 
-.loginCard{
+.loginBox h1{
 
-width:320px;
-margin:auto;
-margin-top:150px;
-background:#1e293b;
-padding:30px;
-border-radius:10px;
+font-size:22px;
+
 text-align:center;
 
+color:#222;
+
+margin-bottom:5px;
+
 }
 
-input,select{
+.subtitle{
 
-width:100%;
+text-align:center;
+
+color:#666;
+
+margin-bottom:10px;
+
+}
+
+.loginBox input{
+
 padding:10px;
-margin-top:10px;
-border:none;
-border-radius:6px;
+
+border:1px solid #ddd;
+
+border-radius:5px;
+
+font-size:14px;
 
 }
 
-button{
+.rememberRow{
 
-padding:10px 16px;
+display:flex;
+
+align-items:center;
+
+gap:6px;
+
+font-size:13px;
+
+color:#555;
+
+}
+
+.loginBox button{
+
 margin-top:10px;
-background:#3b82f6;
+
+padding:11px;
+
 border:none;
-border-radius:6px;
+
+border-radius:5px;
+
+background:#4facfe;
+
 color:white;
+
+font-weight:bold;
+
 cursor:pointer;
 
 }
 
-button:hover{
+.loginBox button:hover{
 
-background:#2563eb;
+background:#3d94e0;
 
 }
+
+
+
+/* DASHBOARD */
+
+.title{
+text-align:center;
+margin-bottom:20px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+padding:10px 20px;
+}
+
+.logoutBtn{
+
+background:#ff4d4d;
+
+border:none;
+
+padding:8px 14px;
+
+border-radius:6px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+/* TASK CONTROLS */
 
 .controls{
 
 display:flex;
-gap:10px;
-margin-bottom:20px;
 
+gap:10px;
+
+margin-bottom:15px;
+
+justify-content:center;
+
+}
+
+.controls input,
+.controls select{
+
+padding:10px;
+
+border-radius:6px;
+
+border:none;
+
+}
+
+.controls button{
+
+background:#1f7aff;
+
+color:white;
+
+border:none;
+
+padding:10px 15px;
+
+border-radius:6px;
+
+cursor:pointer;
+
+}
+
+
+
+/* TABLE */
+
+.tableContainer{
+overflow-x:auto;
 }
 
 table{
 
 width:100%;
+
+min-width:700px;
+
 border-collapse:collapse;
-background:#1e293b;
-table-layout:fixed;
 
-}
-
-th,td{
-
-padding:12px;
-text-align:center;
+background:#16263a;
 
 }
 
 th{
 
-background:#334155;
+background:#223b5a;
+
+padding:12px;
 
 }
 
-.completeBtn{
+td{
 
+padding:12px;
+
+text-align:center;
+
+}
+
+
+/* STATUS COLORS */
+
+.pending{
+background:#8b1e1e;
+}
+
+.completed{
+background:#0f5132;
+}
+
+
+
+/* TASK OPTIONS MODAL */
+
+.modal{
+
+display:none;
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.65);
+
+justify-content:center;
+align-items:center;
+
+}
+
+.modalCard{
+
+background:#1e2f45;
+
+padding:30px;
+
+border-radius:12px;
+
+width:360px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.section{
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.modalCard input,
+.modalCard select,
+.modalCard textarea{
+
+padding:10px;
+
+border-radius:6px;
+
+border:none;
+
+}
+
+textarea{
+
+height:70px;
+
+resize:none;
+
+}
+
+
+/* BUTTONS */
+
+.btn{
+
+padding:10px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+}
+
+.primary{
+background:#1f7aff;
+color:white;
+}
+
+.success{
 background:#16a34a;
-
+color:white;
 }
 
-.deleteBtn{
+.warning{
+background:#f59e0b;
+color:white;
+}
 
+.danger{
 background:#dc2626;
+color:white;
+}
+
+.close{
+background:#374151;
+color:white;
+}
+
+.modalActions{
+display:flex;
+gap:10px;
+}
+
+
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:768px){
+
+.controls{
+flex-direction:column;
+align-items:center;
+}
+
+.controls input,
+.controls select,
+.controls button{
+width:90%;
+}
+
+.topbar{
+flex-direction:column;
+gap:10px;
+}
+
+.modalCard{
+width:90%;
+}
 
 }
