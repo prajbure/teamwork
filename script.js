@@ -13,54 +13,23 @@ doc
 
 const firebaseConfig = {
 
-apiKey: "YOUR_API_KEY",
-authDomain: "YOUR_PROJECT.firebaseapp.com",
-projectId: "YOUR_PROJECT_ID",
-storageBucket: "YOUR_PROJECT.appspot.com",
-messagingSenderId: "XXXX",
-appId: "XXXX"
+apiKey: "AIzaSyBbZ9VXtX5MD2N9NjjlaE8NVKDsFTRn_0A",
+authDomain: "team-work-dfbf1.firebaseapp.com",
+projectId: "team-work-dfbf1",
+storageBucket: "team-work-dfbf1.firebasestorage.app",
+messagingSenderId: "962541650355",
+appId: "1:962541650355:web:6da5dbbacb04fb1c4f4bc6",
+measurementId: "G-8HR15K2842"
 
 };
 
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
 
 
 
-const users={
-"Prajwal":"1234",
-"Parikshith":"1234",
-"Manjunath":"1234",
-"Member4":"1234",
-"Member5":"1234",
-"Member6":"1234"
-}
-
-
-
-window.login=function(){
-
-let u=document.getElementById("username")?.value.trim()
-let p=document.getElementById("password")?.value.trim()
-
-if(users[u]===p){
-
-localStorage.setItem("user",u)
-
-window.location="dashboard.html"
-
-}
-else{
-
-alert("Invalid Login")
-
-}
-
-}
-
-
-
+// ADD TASK
 window.addTask=async function(){
 
 let member=document.getElementById("member").value
@@ -82,6 +51,7 @@ loadTasks()
 
 
 
+// LOAD TASKS
 async function loadTasks(){
 
 let tbody=document.querySelector("#taskTable tbody")
@@ -106,15 +76,11 @@ row.innerHTML=`
 <td>${t.status}</td>
 
 <td>
-<button class="completeBtn" onclick="completeTask('${docSnap.id}')">
-Complete
-</button>
+<button onclick="completeTask('${docSnap.id}')">Complete</button>
 </td>
 
 <td>
-<button class="deleteBtn" onclick="deleteTask('${docSnap.id}')">
-Delete
-</button>
+<button onclick="deleteTask('${docSnap.id}')">Delete</button>
 </td>
 
 `
@@ -127,6 +93,7 @@ tbody.appendChild(row)
 
 
 
+// COMPLETE TASK
 window.completeTask=async function(id){
 
 await updateDoc(doc(db,"tasks",id),{
@@ -141,6 +108,7 @@ loadTasks()
 
 
 
+// DELETE TASK
 window.deleteTask=async function(id){
 
 await deleteDoc(doc(db,"tasks",id))
