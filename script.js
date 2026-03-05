@@ -2,9 +2,9 @@ const users={
 "Prajwal":"1234",
 "Parikshith":"1234",
 "Manjunath":"1234",
-"Member4":"1234",
-"Member5":"1234",
-"Member6":"1234"
+"hemalatha":"1234",
+"chandana m":"1234",
+"chandana g":"1234"
 }
 
 function login(){
@@ -159,6 +159,7 @@ row.style.display=member===selected?"":"none"
 })
 
 }
+
 
 
 renderTable()
