@@ -3,74 +3,42 @@
 
 <head>
 
-<title>Team Task Dashboard</title>
+<title>Startup Daily Update</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body>
+<body class="loginPage">
 
-<h1>📋 Team Task Dashboard</h1>
+<div class="loginWrapper">
 
-<div class="controls">
+<div class="loginBox">
 
-<select id="member">
+<h1>🚀 Startup Daily Update</h1>
 
-<option>Prajwal</option>
-<option>Parikshith</option>
-<option>Manjunath</option>
-<option>Member4</option>
-<option>Member5</option>
-<option>Member6</option>
+<p class="subtitle">Team Member Login</p>
 
-</select>
+<input id="username" placeholder="Username">
 
-<input id="task" placeholder="Assign Task">
+<input id="password" type="password" placeholder="Password">
 
-<button onclick="addTask()">Assign Task</button>
+<div class="rememberRow">
+
+<input type="checkbox" id="remember">
+<label for="remember">Remember me</label>
 
 </div>
 
-
-<!-- FILTER -->
-<div style="margin-bottom:15px">
-
-<select id="filterMember" onchange="filterTasks()">
-
-<option value="all">All Tasks</option>
-<option>Prajwal</option>
-<option>Parikshith</option>
-<option>Manjunath</option>
-<option>Member4</option>
-<option>Member5</option>
-<option>Member6</option>
-
-</select>
+<button onclick="login()">Login</button>
 
 </div>
 
+</div>
 
-
-<table id="taskTable">
-
-<thead>
-
-<tr>
-<th>Date</th>
-<th>Assigned To</th>
-<th>Task</th>
-<th>Status</th>
-<th>Completed</th>
-<th>Delete</th>
-</tr>
-
-</thead>
-
-<tbody></tbody>
-
-</table>
-
-<script type="module" src="script.js"></script>
+<script src="login.js"></script>
 
 </body>
 </html>
