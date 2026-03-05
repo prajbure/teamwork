@@ -38,10 +38,11 @@ const users={
 }
 
 
+
 window.login=function(){
 
-let u=document.getElementById("username").value.trim()
-let p=document.getElementById("password").value.trim()
+let u=document.getElementById("username")?.value.trim()
+let p=document.getElementById("password")?.value.trim()
 
 if(users[u]===p){
 
