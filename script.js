@@ -18,8 +18,7 @@ authDomain: "team-work-dfbf1.firebaseapp.com",
 projectId: "team-work-dfbf1",
 storageBucket: "team-work-dfbf1.firebasestorage.app",
 messagingSenderId: "962541650355",
-appId: "1:962541650355:web:6da5dbbacb04fb1c4f4bc6",
-measurementId: "G-8HR15K2842"
+appId: "1:962541650355:web:6da5dbbacb04fb1c4f4bc6"
 
 };
 
@@ -27,9 +26,10 @@ measurementId: "G-8HR15K2842"
 const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
 
+let allTasks=[];
 
 
-// ADD TASK
+
 window.addTask=async function(){
 
 let member=document.getElementById("member").value
@@ -38,9 +38,9 @@ let date=new Date().toLocaleDateString()
 
 await addDoc(collection(db,"tasks"),{
 
-date:date,
-member:member,
-task:task,
+date,
+member,
+task,
 status:"Pending"
 
 })
@@ -51,20 +51,35 @@ loadTasks()
 
 
 
-// LOAD TASKS
 async function loadTasks(){
 
-let tbody=document.querySelector("#taskTable tbody")
-
-if(!tbody) return
-
-tbody.innerHTML=""
-
 const querySnapshot=await getDocs(collection(db,"tasks"))
+
+allTasks=[]
 
 querySnapshot.forEach((docSnap)=>{
 
 let t=docSnap.data()
+
+t.id=docSnap.id
+
+allTasks.push(t)
+
+})
+
+renderTasks(allTasks)
+
+}
+
+
+
+function renderTasks(tasks){
+
+let tbody=document.querySelector("#taskTable tbody")
+
+tbody.innerHTML=""
+
+tasks.forEach((t)=>{
 
 let row=document.createElement("tr")
 
@@ -76,11 +91,11 @@ row.innerHTML=`
 <td>${t.status}</td>
 
 <td>
-<button onclick="completeTask('${docSnap.id}')">Complete</button>
+<button onclick="completeTask('${t.id}')">Complete</button>
 </td>
 
 <td>
-<button onclick="deleteTask('${docSnap.id}')">Delete</button>
+<button onclick="deleteTask('${t.id}')">Delete</button>
 </td>
 
 `
@@ -93,7 +108,27 @@ tbody.appendChild(row)
 
 
 
-// COMPLETE TASK
+window.filterTasks=function(){
+
+let selected=document.getElementById("filterMember").value
+
+if(selected==="all"){
+
+renderTasks(allTasks)
+
+}
+else{
+
+let filtered=allTasks.filter(t=>t.member===selected)
+
+renderTasks(filtered)
+
+}
+
+}
+
+
+
 window.completeTask=async function(id){
 
 await updateDoc(doc(db,"tasks",id),{
@@ -108,7 +143,6 @@ loadTasks()
 
 
 
-// DELETE TASK
 window.deleteTask=async function(id){
 
 await deleteDoc(doc(db,"tasks",id))
