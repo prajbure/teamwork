@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Startup Daily Update</title>
+<title>Team Task Dashboard</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,34 +11,135 @@
 
 </head>
 
-<body class="loginPage">
+<body>
 
-<div class="loginWrapper">
+<div class="topbar">
 
-<div class="loginBox">
+<span id="welcomeUser"></span>
 
-<h1>🚀 Startup Daily Update</h1>
-
-<p class="subtitle">Team Member Login</p>
-
-<input id="username" placeholder="Username">
-
-<input id="password" type="password" placeholder="Password">
-
-<div class="rememberRow">
-
-<input type="checkbox" id="remember">
-<label for="remember">Remember me</label>
+<button onclick="logout()" class="logoutBtn">Logout</button>
 
 </div>
 
-<button onclick="login()">Login</button>
+<h1 class="title">📋 Team Task Dashboard</h1>
+
+<div class="controls">
+
+<select id="member"></select>
+
+<input id="task" placeholder="Assign Task">
+
+<button onclick="addTask()">Assign Task</button>
+
+</div>
+
+<select id="filterMember" onchange="filterTasks()">
+
+<option value="all">All Tasks</option>
+<option>Prajwal</option>
+<option>Parikshith</option>
+<option>Manjunath</option>
+<option>Chandana Hublikar</option>
+<option>Hemalatha</option>
+<option>Chandana G</option>
+
+</select>
+
+<div class="tableContainer">
+
+<table id="taskTable">
+
+<thead>
+
+<tr>
+<th>Date</th>
+<th>Assigned To</th>
+<th>Task</th>
+<th>Status</th>
+<th>Due Date</th>
+<th>Notes</th>
+<th>Options</th>
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+
+<div id="taskModal" class="modal">
+
+<div class="modalCard">
+
+<h2>⚙ Task Options</h2>
+
+<button class="btn success" id="completeBtn">
+✔ Complete Task
+</button>
+
+<div class="section">
+
+<label>Reassign Task</label>
+
+<select id="transferMember">
+<option>Prajwal</option>
+<option>Parikshith</option>
+<option>Manjunath</option>
+<option>Chandana Hublikar</option>
+<option>Hemalatha</option>
+<option>Chandana G</option>
+</select>
+
+<button class="btn primary" id="transferBtn">
+🔁 Reassign
+</button>
+
+</div>
+
+<div class="section">
+
+<label>Due Date</label>
+
+<input type="date" id="dueDate">
+
+<button class="btn warning" id="setDateBtn">
+📅 Set Due Date
+</button>
+
+</div>
+
+<div class="section">
+
+<label>Add Note</label>
+
+<textarea id="noteBox" placeholder="Write note for this task..."></textarea>
+
+<button class="btn primary" id="saveNote">
+💾 Save Note
+</button>
+
+</div>
+
+<div class="modalActions">
+
+<button class="btn danger" id="deleteTask">
+🗑 Delete Task
+</button>
+
+<button class="btn close" onclick="closeModal()">
+✖ Close
+</button>
 
 </div>
 
 </div>
 
-<script src="login.js"></script>
+</div>
+
+<script type="module" src="script.js"></script>
 
 </body>
 </html>
